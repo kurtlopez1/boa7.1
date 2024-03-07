@@ -1,5 +1,6 @@
 import requests
 import json
+import tkinter as tk
 
 def get_ip_info():
     """
@@ -22,23 +23,21 @@ def main():
     asn = ip_info['asn']
     timezone = ip_info['timezone']
     currency = ip_info['currency']
-    languages = ip_info['languages']
-    formatted_ip4 = f"IPv4 Address: {ipv4_address}"
-    formatted_ip6 = f"IPv6 Address: {ipv6_address}" if ipv6_address else "IPv6 Address: N/A"
-    formatted_location = f"City: {city}, Region: {region}, Country: {country}"
-    formatted_isp = f"ISP: {isp}"
-    formatted_asn = f"ASN: {asn}"
-    formatted_timezone = f"Timezone: {timezone}"
-    formatted_currency = f"Currency: {currency}"
-    formatted_languages = f"LanguagesP: {', '.join(languages)}"
-    print(formatted_ip4)
-    print(formatted_ip6)
-    print(formatted_location)
-    print(formatted_isp)
-    print(formatted_asn)
-    print(formatted_timezone)
-    print(formatted_currency)
-    print(formatted_languages)
+
+    # Create GUI window
+    root = tk.Tk()
+    root.title("IP Address Information")
+
+    # Display IP information using labels
+    tk.Label(root, text=f"IPv4 Address: {ipv4_address}").pack()
+    tk.Label(root, text=f"IPv6 Address: {ipv6_address}").pack()
+    tk.Label(root, text=f"City: {city}, Region: {region}, Country: {country}").pack()
+    tk.Label(root, text=f"ISP: {isp}").pack()
+    tk.Label(root, text=f"ASN: {asn}").pack()
+    tk.Label(root, text=f"Timezone: {timezone}").pack()
+    tk.Label(root, text=f"Currency: {currency}").pack()
+
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
